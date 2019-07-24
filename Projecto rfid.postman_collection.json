@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "330e2257-9982-489e-9cf3-b4f6fd4f8150",
+		"name": "Projecto rfid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alumnos",
+			"item": [
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rfid",
+									"value": "159753",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Eduardo",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "apellidoP",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "apellidoM",
+									"type": "text"
+								},
+								{
+									"key": "matricula",
+									"value": "741852",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/registro",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"registro"
+							]
+						},
+						"description": "Registra a un alumno"
+					},
+					"response": []
+				},
+				{
+					"name": "All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/alumno",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"alumno"
+							]
+						},
+						"description": "Retorna todos los alumnos"
+					},
+					"response": []
+				},
+				{
+					"name": "ByRfid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rfid",
+									"value": "159753",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/alumnoByRfid",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"alumnoByRfid"
+							]
+						},
+						"description": "busca un alumnos por rfid y retorna sus datos"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rfid",
+									"value": "159753",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/alumnoDelete",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"alumnoDelete"
+							]
+						},
+						"description": "busca un alumno por rfid y lo elimina"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rfid",
+									"value": "159753",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Eduardo2",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "Torres",
+									"type": "text"
+								},
+								{
+									"key": "apellio_materno",
+									"value": "Hurtado",
+									"type": "text"
+								},
+								{
+									"key": "matricula",
+									"value": "159753",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "9",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/alumnoUpdate",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"alumnoUpdate"
+							]
+						},
+						"description": "actualiza los datos de un alumno"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profesores",
+			"item": [
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Victor",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "Ramos",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "Fon Bon",
+									"type": "text"
+								},
+								{
+									"key": "matricula",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/registroProfesor",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"registroProfesor"
+							]
+						},
+						"description": "registra un profesor"
+					},
+					"response": []
+				},
+				{
+					"name": "Profesores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/profesor",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profesor"
+							]
+						},
+						"description": "retorna todos los profesores"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/profesorDelete",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profesorDelete"
+							]
+						},
+						"description": "elimina un profesor por id"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Victor2",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "Ramos2",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "Fon Bon2",
+									"type": "text"
+								},
+								{
+									"key": "matricula",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/profesorUpdate",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profesorUpdate"
+							]
+						},
+						"description": "modifica los datos de un profesor"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Materias",
+			"item": [
+				{
+					"name": "Registrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "prueba",
+									"type": "text"
+								},
+								{
+									"key": "id_profesor",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/registroMateria",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"registroMateria"
+							]
+						},
+						"description": "registra una nueva materia"
+					},
+					"response": []
+				},
+				{
+					"name": "materia",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/materia",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"materia"
+							]
+						},
+						"description": "retorna todas las materias"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/materiaDelete",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"materiaDelete"
+							]
+						},
+						"description": "elimina una materia por id"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "NombreMateria",
+									"type": "text"
+								},
+								{
+									"key": "id_profesor",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/materiaUpdate",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"materiaUpdate"
+							]
+						},
+						"description": "actualiza los datos de una materia"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Horario",
+			"item": [
+				{
+					"name": "Horario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/horarioById",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"horarioById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cargar Materias",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_alumno",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id_materia",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/registroHorario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"registroHorario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
