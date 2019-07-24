@@ -367,13 +367,16 @@ router.post('/asistencia', (req, res) => {
     var id_relacion;
     var queryString = '(SELECT id FROM relacion WHERE id_dia = (SELECT id FROM dia WHERE dia = ' + dia + ') AND hora_inicio <= "' + hora + '" AND hora_fin >= "' + hora + '")';
     var queryString3 = 'SELECT id FROM alumno WHERE rfid = ' + req.body.rfid;
+    console.log(queryString);
+    console.log(queryString3);
     connection.query(queryString3, function (error3, results3, fields3) {
         if (results3.length == 0) {
             //aqui va el socket que dice que no se encontro el alumno
-            res.json({
-                ok: "No registrado",
-                b: false
-            });
+            // res.json({
+            //     ok:"No registrado",
+            //     b:false
+            // });
+            res.send(false);
         }
         else {
             id_alumno = results3[0].id;

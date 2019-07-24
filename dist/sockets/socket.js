@@ -12,7 +12,7 @@ exports.mesanjes = (Cliente, io) => {
     });
 };
 exports.escucharEsp = (Cliente, io) => {
-    Cliente.on('escucharEsp', (payload) => {
+    Cliente.on('esp', (payload) => {
         console.log('Mensaje Recibido', payload);
         io.emit('mensaje-nuevo', payload);
     });
