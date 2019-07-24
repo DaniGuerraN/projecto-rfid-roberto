@@ -187,6 +187,25 @@ router.post('/profesorUpdate', (req, res) => {
     });
     // cuerpo:cuerpo
 });
+//busca a un alumni por rfid y regresa los datos
+router.post('/profesorById', (req, res) => {
+    var queryResults;
+    var queryString = 'SELECT * FROM profesor where id = ' + req.body.id_profesor;
+    connection.query(queryString, function (error, results, fields) {
+        if (results.length != 0) {
+            var queryResults = results;
+        }
+        else {
+            results[0] = "error";
+            var queryResults = results[0];
+        }
+        res.json({
+            ok: true,
+            r: queryResults
+        });
+    });
+    // cuerpo:cuerpo
+});
 //-------------------------------<><><><><>----------------------------
 //-----------------------------Materia---------------------------------
 //registra un alumno
