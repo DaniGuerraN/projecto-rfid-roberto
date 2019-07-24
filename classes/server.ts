@@ -28,6 +28,7 @@ export default class Server {
 
         this.httServer = new http.Server(this.app);
         this.io = socketIO(this.httServer);
+        this.escucharScokets()
     }
 
     public static get instance() {
@@ -40,6 +41,7 @@ export default class Server {
             console.log('Cliente Conectado');
 
             socket.mesanjes(cliente, this.io);
+            socket.escucharEsp(cliente,this.io);
 
             socket.desconectar(cliente);
         });

@@ -11,3 +11,9 @@ exports.mesanjes = (Cliente, io) => {
         io.emit('mensaje-nuevo', payload);
     });
 };
+exports.escucharEsp = (Cliente, io) => {
+    Cliente.on('escucharEsp', (payload) => {
+        console.log('Mensaje Recibido', payload);
+        io.emit('mensaje-nuevo', payload);
+    });
+};

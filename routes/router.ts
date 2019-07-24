@@ -3,6 +3,7 @@ var mysql = require('mysql');
 
 
 
+
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -454,7 +455,8 @@ router.post('/asistencia', (req: Request, res: Response)=>{
         if(results3.length == 0){
             //aqui va el socket que dice que no se encontro el alumno
             res.json({
-                ok:"no alumno"
+                ok:"No registrado",
+                b:false
             });
         }else{
             id_alumno=results3[0].id

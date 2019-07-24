@@ -371,7 +371,8 @@ router.post('/asistencia', (req, res) => {
         if (results3.length == 0) {
             //aqui va el socket que dice que no se encontro el alumno
             res.json({
-                ok: "no alumno"
+                ok: "No registrado",
+                b: false
             });
         }
         else {

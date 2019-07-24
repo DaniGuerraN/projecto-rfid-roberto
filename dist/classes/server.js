@@ -27,6 +27,7 @@ class Server {
         this.port = enviroment_1.SERVER_PORT;
         this.httServer = new http_1.default.Server(this.app);
         this.io = socket_io_1.default(this.httServer);
+        this.escucharScokets();
     }
     static get instance() {
         return this._instance || (this._instance = new this());
@@ -36,6 +37,7 @@ class Server {
         this.io.on('connection', cliente => {
             console.log('Cliente Conectado');
             socket.mesanjes(cliente, this.io);
+            socket.escucharEsp(cliente, this.io);
             socket.desconectar(cliente);
         });
     }
