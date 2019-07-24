@@ -187,7 +187,7 @@ router.post('/profesorUpdate', (req, res) => {
     });
     // cuerpo:cuerpo
 });
-//busca a un alumni por rfid y regresa los datos
+//busca a un profesor por rfid y regresa los datos
 router.post('/profesorById', (req, res) => {
     var queryResults;
     var queryString = 'SELECT * FROM profesor where id = ' + req.body.id_profesor;
@@ -208,7 +208,7 @@ router.post('/profesorById', (req, res) => {
 });
 //-------------------------------<><><><><>----------------------------
 //-----------------------------Materia---------------------------------
-//registra un alumno
+//registra una materia
 router.post('/registroMateria', (req, res) => {
     var queryResults;
     var nombre = req.body.nombre;
@@ -278,6 +278,25 @@ router.post('/materiaUpdate', (req, res) => {
         }
         res.json({
             ok: true
+        });
+    });
+    // cuerpo:cuerpo
+});
+//busca a un alumni por rfid y regresa los datos
+router.post('/materiaById', (req, res) => {
+    var queryResults;
+    var queryString = 'SELECT * FROM materia where id = ' + req.body.id_materia;
+    connection.query(queryString, function (error, results, fields) {
+        if (results.length != 0) {
+            var queryResults = results;
+        }
+        else {
+            results[0] = "error";
+            var queryResults = results[0];
+        }
+        res.json({
+            ok: true,
+            r: queryResults
         });
     });
     // cuerpo:cuerpo
