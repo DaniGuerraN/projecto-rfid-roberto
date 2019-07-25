@@ -2,6 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 var mysql = require('mysql');
+/*var LCD = require('lcdi2c');
+var lcd = new LCD( 1, 0x27, 20, 4);
+const {StringDecoder} = require('string_decoder')
+var sleep = require('sleep');
+lcd.clear();
+
+
+
+
+        lcd.clear();
+        lcd.print('-----READY!-----');
+
+*/
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -22,6 +35,9 @@ router.post('/registro', (req, res) => {
     var queryString = 'INSERT INTO `alumno` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `matricula`, `rfid`) VALUES (NULL,"' + nombre + '", "' + apellido_paterno + '","' + apellido_materno + '", ' + matricula + ',' + rfid + ');';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+lcd.println("Alumno Registrad",1)
+lcd.println(req.body.nombre,2)*/
             var queryResults = results;
         }
         else {
@@ -60,6 +76,9 @@ router.post('/alumnoDelete', (req, res) => {
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
             var queryResults = results;
+            /*lcd.clear()
+lcd.println("Alumno elimindo",1)
+lcd.println("rfid:" + req.body.rfid,2)*/
         }
         else {
             results[0] = "error";
@@ -77,6 +96,9 @@ router.post('/alumnoUpdate', (req, res) => {
     var queryString = 'UPDATE alumno SET nombre = "' + req.body.nombre + '", apellido_paterno = "' + req.body.apellido_paterno + '", apellido_materno = "' + req.body.apellido_materno + '", `matricula` = ' + req.body.matricula + ', rfid = ' + req.body.rfid + ' WHERE alumno.id = ' + req.body.id + ';';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+lcd.println("Alumno update",1)
+lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
             var queryResults = results;
         }
         else {
@@ -120,6 +142,9 @@ router.post('/registroProfesor', (req, res) => {
     var queryString = 'INSERT INTO `profesor` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `matricula`) VALUES (NULL,"' + nombre + '", "' + apellido_paterno + '","' + apellido_materno + '", ' + matricula + ');';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+            lcd.println("Profe Registrado",1)
+            lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
             var queryResults = results;
         }
         else {
@@ -157,6 +182,9 @@ router.post('/profesorDelete', (req, res) => {
     var queryString = 'DELETE FROM profesor WHERE id = ' + req.body.id;
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+lcd.println("Profe eliminado",1)
+lcd.println("----------------",2)*/
             var queryResults = results;
         }
         else {
@@ -175,6 +203,9 @@ router.post('/profesorUpdate', (req, res) => {
     var queryString = 'UPDATE profesor SET nombre = "' + req.body.nombre + '", apellido_paterno = "' + req.body.apellido_paterno + '", apellido_materno = "' + req.body.apellido_materno + '", `matricula` = ' + req.body.matricula + ' WHERE profesor.id = ' + req.body.id + ';';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+lcd.println("Profe update",1)
+lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
             var queryResults = results;
         }
         else {
@@ -216,6 +247,9 @@ router.post('/registroMateria', (req, res) => {
     var queryString = 'INSERT INTO `materia` (`id`, `nombre`, `id_profesor`) VALUES (NULL,"' + nombre + '", ' + id_profesor + ');';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+lcd.println("Materia agregada",1)
+lcd.println(req.body.nombre,2)*/
             var queryResults = results;
         }
         else {
@@ -253,6 +287,9 @@ router.post('/materiaDelete', (req, res) => {
     var queryString = 'DELETE FROM materia WHERE id = ' + req.body.id;
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+lcd.println("Materia borrada",1)
+lcd.println(req.body.nombre,2)*/
             var queryResults = results;
         }
         else {
@@ -270,6 +307,9 @@ router.post('/materiaUpdate', (req, res) => {
     var queryString = 'UPDATE materia SET nombre = "' + req.body.nombre + '", id_profesor = "' + req.body.id_profesor + '" WHERE materia.id = ' + req.body.id + ';';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
+            /*lcd.clear()
+lcd.println("Materia update",1)
+lcd.println(req.body.nombre,2)*/
             var queryResults = results;
         }
         else {
@@ -378,16 +418,14 @@ router.post('/registroHorario', (req, res) => {
 router.post('/asistencia', (req, res) => {
     var queryResults;
     var date = new Date;
-    date.setDate(2);
-    date.setHours(12);
+    //date.setDate(2)
+    //date.setHours(12)
     var dia = date.getUTCDay();
     var hora = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     var id_alumno;
     var id_relacion;
     var queryString = '(SELECT id FROM relacion WHERE id_dia = (SELECT id FROM dia WHERE dia = ' + dia + ') AND hora_inicio <= "' + hora + '" AND hora_fin >= "' + hora + '")';
-    var queryString3 = 'SELECT id FROM alumno WHERE rfid = ' + req.body.rfid;
-    console.log(queryString);
-    console.log(queryString3);
+    var queryString3 = 'SELECT * FROM alumno WHERE rfid = ' + req.body.rfid;
     connection.query(queryString3, function (error3, results3, fields3) {
         if (results3.length == 0) {
             //aqui va el socket que dice que no se encontro el alumno
@@ -395,6 +433,9 @@ router.post('/asistencia', (req, res) => {
             //     ok:"No registrado",
             //     b:false
             // });
+            /*lcd.clear()
+lcd.println("-----Alumno-----",1)
+lcd.println(--no Registrado,2-)*/
             res.send(false);
         }
         else {
@@ -413,7 +454,10 @@ router.post('/asistencia', (req, res) => {
                         if (error2) {
                         }
                         else {
-                            console.log(results2);
+                            console.log(results3.nombre);
+                            /*lcd.clear()
+                        lcd.println("Alumno registrad",1)
+                        lcd.println(results3.nombre,2-)*/
                             res.json({
                                 ok: true
                             });
