@@ -301,6 +301,25 @@ router.post('/materiaById', (req, res) => {
     });
     // cuerpo:cuerpo
 });
+//busca a un alumni por rfid y regresa los datos
+router.post('/materiaByIdAlumno', (req, res) => {
+    var queryResults;
+    var queryString = "SELECT materia.* FROM horario INNER JOIN materia on horario.id_relaciones = materia.id INNER JOIN alumno on alumno.id = horario.id_alumno WHERE alumno.id =" + req.body.id_alumno;
+    connection.query(queryString, function (error, results, fields) {
+        if (results.length != 0) {
+            var queryResults = results;
+        }
+        else {
+            results[0] = "error";
+            var queryResults = results[0];
+        }
+        res.json({
+            ok: true,
+            r: queryResults
+        });
+    });
+    // cuerpo:cuerpo
+});
 //-----------------------------<><><><><>------------------------------
 //-----------------------------Horario---------------------------------
 //busca el horario de un alumno por el id del alumno
