@@ -332,6 +332,27 @@ router.get('/materia', (req: Request, res: Response)=>{
     // cuerpo:cuerpo
 });
 
+//retorna todas las materias
+router.get('/materiaProfesor', (req: Request, res: Response)=>{
+
+    var queryResults:any
+
+    var queryString = 'SELECT materia.nombre asignatura, profesor.nombre, profesor.apellido_paterno, profesor.apellido_materno from materia INNER JOIN profesor on materia.id_profesor = profesor.id'
+
+    connection.query(queryString, function (error:any, results:any, fields:any) {
+        if(results.length != 0){
+            var queryResults = results
+        }else{
+            results[0] = "error"
+            var queryResults = results[0];
+        }
+        res.json({
+            ok:true,
+            r:queryResults
+        });
+    });
+    // cuerpo:cuerpo
+});
 
 //elimina una materia
 router.post('/materiaDelete', (req: Request, res: Response)=>{
