@@ -65,12 +65,11 @@ router.get('/alumno', (req: Request, res: Response)=>{
     var queryString = 'SELECT * FROM alumno'
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
-        if(results.length != 0){
+            console.log("results")
+            console.log(results)
+
             var queryResults = results
-        }else{
-            results[0] = "error"
             var queryResults = results[0];
-        }
         res.json({
             ok:true,
             r:queryResults
