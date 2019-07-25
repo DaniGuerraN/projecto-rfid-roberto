@@ -67,7 +67,8 @@ router.get('/alumno', (req: Request, res: Response)=>{
     connection.query(queryString, function (error:any, results:any, fields:any) {
             console.log("results")
             console.log(results)
-
+            console.log(error)
+            console.log(fields)
             var queryResults = results
             var queryResults = results[0];
         res.json({
