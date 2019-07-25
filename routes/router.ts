@@ -16,7 +16,7 @@ lcd.clear();
 */
 
 var connection = mysql.createConnection({
-    host: '10.42.0.158',
+    host: '10.42.0.12',
     user: 'root',
     password: '',
     database: 'arquidb',
