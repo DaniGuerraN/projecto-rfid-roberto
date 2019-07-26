@@ -16,9 +16,9 @@ lcd.clear();
 
 */
 var connection = mysql.createConnection({
-    host: '192.168.43.194',
-    user: 'lalo',
-    password: '123467',
+    host: 'localhost',
+    user: 'root',
+    password: '',
     database: 'arquidb',
     port: 3306
 });
@@ -55,12 +55,13 @@ router.get('/alumno', (req, res) => {
     var queryResults;
     var queryString = 'SELECT * FROM alumno';
     connection.query(queryString, function (error, results, fields) {
-        console.log("results");
-        console.log(results);
-        console.log(error);
-        console.log(fields);
-        var queryResults = results;
-        var queryResults = results[0];
+        if (results.length != 0) {
+            var queryResults = results;
+        }
+        else {
+            results[0] = "error";
+            var queryResults = results[0];
+        }
         res.json({
             ok: true,
             r: queryResults
@@ -489,6 +490,25 @@ lcd.println(--no Registrado,2-)*/
                 }
             });
         }
+    });
+    // cuerpo:cuerpo
+});
+//busca a un alumni por rfid y regresa los datos
+router.post('/asistenciaById', (req, res) => {
+    var queryResults;
+    var queryString = 'SELECT r.hora_inicio, r.hora_fin, m.nombre clase, r.id_dia from alumno a INNER JOIN asistencia h on a.id = h.id_alumno INNER JOIN relacion r on r.id = h.id_relacion INNER JOIN materia m on r.id_materia = m.id WHERE a.id =' + req.body.id_alumno;
+    connection.query(queryString, function (error, results, fields) {
+        if (results.length != 0) {
+            var queryResults = results;
+        }
+        else {
+            results[0] = "error";
+            var queryResults = results[0];
+        }
+        res.json({
+            ok: true,
+            r: queryResults
+        });
     });
     // cuerpo:cuerpo
 });

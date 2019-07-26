@@ -16,9 +16,9 @@ lcd.clear();
 */
 
 var connection = mysql.createConnection({
-    host: '192.168.43.194',
-    user: 'lalo',
-    password: '123467',
+    host: 'localhost',
+    user: 'root',
+    password: '',
     database: 'arquidb',
     port: 3306
  });
@@ -65,12 +65,12 @@ router.get('/alumno', (req: Request, res: Response)=>{
     var queryString = 'SELECT * FROM alumno'
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
-            console.log("results")
-            console.log(results)
-            console.log(error)
-            console.log(fields)
+        if(results.length != 0){
             var queryResults = results
+        }else{
+            results[0] = "error"
             var queryResults = results[0];
+        }
         res.json({
             ok:true,
             r:queryResults
@@ -149,6 +149,7 @@ router.post('/alumnoByRfid', (req: Request, res: Response)=>{
     });
     // cuerpo:cuerpo
 });
+
 
 
 //---------------------------<><><><><>--------------------------------
@@ -586,6 +587,27 @@ router.post('/asistencia', (req: Request, res: Response)=>{
     // cuerpo:cuerpo
 });
 
+//busca a un alumni por rfid y regresa los datos
+router.post('/asistenciaById', (req: Request, res: Response)=>{
+
+    var queryResults:any
+
+    var queryString = 'SELECT r.hora_inicio, r.hora_fin, m.nombre clase, r.id_dia from alumno a INNER JOIN asistencia h on a.id = h.id_alumno INNER JOIN relacion r on r.id = h.id_relacion INNER JOIN materia m on r.id_materia = m.id WHERE a.id =' + req.body.id_alumno
+
+    connection.query(queryString, function (error:any, results:any, fields:any) {
+        if(results.length != 0){
+            var queryResults = results
+        }else{
+            results[0] = "error"
+            var queryResults = results[0];
+        }
+        res.json({
+            ok:true,
+            r:queryResults
+        });
+    });
+    // cuerpo:cuerpo
+});
 
 
 router.delete('/mensajes/:id', (req: Request, res: Response)=>{
