@@ -591,7 +591,7 @@ router.post('/asistenciaById', (req: Request, res: Response)=>{
 
     var queryResults:any
 
-    var queryString = 'SELECT r.hora_inicio, r.hora_fin, m.nombre clase, r.id_dia from alumno a INNER JOIN asistencia h on a.id = h.id_alumno INNER JOIN relacion r on r.id = h.id_relacion INNER JOIN materia m on r.id_materia = m.id WHERE a.id =' + req.body.id_alumno
+    var queryString = 'SELECT r.hora_inicio, r.hora_fin, m.nombre clase, r.id_dia, a.nombre from alumno a INNER JOIN asistencia h on a.id = h.id_alumno INNER JOIN relacion r on r.id = h.id_relacion INNER JOIN materia m on r.id_materia = m.id WHERE a.id =' + req.body.id_alumno
  
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
