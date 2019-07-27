@@ -17,7 +17,7 @@ lcd.clear();
 
 var connection = mysql.createConnection({
     host: '192.168.1.72',
-    user: 'dani',
+    user: 'Dani',
     password: '1234',
     database: 'arquidb',
     port: 3306
@@ -192,6 +192,7 @@ router.get('/profesor', (req: Request, res: Response)=>{
     var queryString = 'SELECT * FROM profesor'
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
+        console.log(error)
         if(results.length != 0){
             var queryResults = results
         }else{
