@@ -27,9 +27,9 @@ router.post('/registro', (req, res) => {
     var queryString = 'INSERT INTO `alumno` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `matricula`, `rfid`) VALUES (NULL,"' + nombre + '", "' + apellido_paterno + '","' + apellido_materno + '", ' + matricula + ',' + rfid + ');';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-lcd.println("Alumno Registrad",1)
-lcd.println(req.body.nombre,2)*/
+            lcd.clear();
+            lcd.println("Alumno Registrad", 1);
+            lcd.println(req.body.nombre, 2);
             var queryResults = results;
         }
         else {
@@ -68,9 +68,9 @@ router.post('/alumnoDelete', (req, res) => {
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
             var queryResults = results;
-            /*lcd.clear()
-lcd.println("Alumno elimindo",1)
-lcd.println("rfid:" + req.body.rfid,2)*/
+            lcd.clear();
+            lcd.println("Alumno elimindo", 1);
+            lcd.println("rfid:" + req.body.rfid, 2);
         }
         else {
             results[0] = "error";
@@ -88,9 +88,9 @@ router.post('/alumnoUpdate', (req, res) => {
     var queryString = 'UPDATE alumno SET nombre = "' + req.body.nombre + '", apellido_paterno = "' + req.body.apellido_paterno + '", apellido_materno = "' + req.body.apellido_materno + '", `matricula` = ' + req.body.matricula + ', rfid = ' + req.body.rfid + ' WHERE alumno.id = ' + req.body.id + ';';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-lcd.println("Alumno update",1)
-lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
+            lcd.clear();
+            lcd.println("Alumno update", 1);
+            lcd.println(req.body.nombre + " " + req.body.apellido_paterno, 2);
             var queryResults = results;
         }
         else {
@@ -134,9 +134,9 @@ router.post('/registroProfesor', (req, res) => {
     var queryString = 'INSERT INTO `profesor` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `matricula`) VALUES (NULL,"' + nombre + '", "' + apellido_paterno + '","' + apellido_materno + '", ' + matricula + ');';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-            lcd.println("Profe Registrado",1)
-            lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
+            lcd.clear();
+            lcd.println("Profe Registrado", 1);
+            lcd.println(req.body.nombre + " " + req.body.apellido_paterno, 2);
             var queryResults = results;
         }
         else {
@@ -175,9 +175,9 @@ router.post('/profesorDelete', (req, res) => {
     var queryString = 'DELETE FROM profesor WHERE id = ' + req.body.id;
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-lcd.println("Profe eliminado",1)
-lcd.println("----------------",2)*/
+            lcd.clear();
+            lcd.println("Profe eliminado", 1);
+            lcd.println("----------------", 2);
             var queryResults = results;
         }
         else {
@@ -196,9 +196,9 @@ router.post('/profesorUpdate', (req, res) => {
     var queryString = 'UPDATE profesor SET nombre = "' + req.body.nombre + '", apellido_paterno = "' + req.body.apellido_paterno + '", apellido_materno = "' + req.body.apellido_materno + '", `matricula` = ' + req.body.matricula + ' WHERE profesor.id = ' + req.body.id + ';';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-lcd.println("Profe update",1)
-lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
+            lcd.clear();
+            lcd.println("Profe update", 1);
+            lcd.println(req.body.nombre + " " + req.body.apellido_paterno, 2);
             var queryResults = results;
         }
         else {
@@ -240,9 +240,9 @@ router.post('/registroMateria', (req, res) => {
     var queryString = 'INSERT INTO `materia` (`id`, `nombre`, `id_profesor`) VALUES (NULL,"' + nombre + '", ' + id_profesor + ');';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-lcd.println("Materia agregada",1)
-lcd.println(req.body.nombre,2)*/
+            lcd.clear();
+            lcd.println("Materia agregada", 1);
+            lcd.println(req.body.nombre, 2);
             var queryResults = results;
         }
         else {
@@ -299,9 +299,9 @@ router.post('/materiaDelete', (req, res) => {
     var queryString = 'DELETE FROM materia WHERE id = ' + req.body.id;
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-lcd.println("Materia borrada",1)
-lcd.println(req.body.nombre,2)*/
+            lcd.clear();
+            lcd.println("Materia borrada", 1);
+            lcd.println(req.body.nombre, 2);
             var queryResults = results;
         }
         else {
@@ -319,9 +319,9 @@ router.post('/materiaUpdate', (req, res) => {
     var queryString = 'UPDATE materia SET nombre = "' + req.body.nombre + '", id_profesor = "' + req.body.id_profesor + '" WHERE materia.id = ' + req.body.id + ';';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
-            /*lcd.clear()
-lcd.println("Materia update",1)
-lcd.println(req.body.nombre,2)*/
+            lcd.clear();
+            lcd.println("Materia update", 1);
+            lcd.println(req.body.nombre, 2);
             var queryResults = results;
         }
         else {
@@ -445,9 +445,9 @@ router.post('/asistencia', (req, res) => {
             //     ok:"No registrado",
             //     b:false
             // });
-            /*lcd.clear()
-lcd.println("-----Alumno-----",1)
-lcd.println(--no Registrado,2-)*/
+            lcd.clear();
+            lcd.println("-----Alumno-----", 1);
+            lcd.println("--no Registrado,2-");
             res.send(false);
         }
         else {
@@ -467,9 +467,9 @@ lcd.println(--no Registrado,2-)*/
                         }
                         else {
                             console.log(results3.nombre);
-                            /*lcd.clear()
-                        lcd.println("Alumno registrad",1)
-                        lcd.println(results3.nombre,2-)*/
+                            lcd.clear();
+                            lcd.println("Alumno registrad", 1);
+                            lcd.println("results3.nombre,2-");
                             res.json({
                                 ok: true
                             });

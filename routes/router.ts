@@ -40,9 +40,9 @@ router.post('/registro', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Alumno Registrad",1)
-    lcd.println(req.body.nombre,2)*/
+    lcd.println(req.body.nombre,2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -88,9 +88,9 @@ router.post('/alumnoDelete', (req: Request, res: Response)=>{
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
             var queryResults = results
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Alumno elimindo",1)
-    lcd.println("rfid:" + req.body.rfid,2)*/
+    lcd.println("rfid:" + req.body.rfid,2)
         }else{
             results[0] = "error"
             var queryResults = results[0];
@@ -111,9 +111,9 @@ router.post('/alumnoUpdate', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Alumno update",1)
-    lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
+    lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -167,9 +167,9 @@ router.post('/registroProfesor', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-    /*lcd.clear()
+    lcd.clear()
     lcd.println("Profe Registrado",1)
-    lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
+    lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -214,9 +214,9 @@ router.post('/profesorDelete', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Profe eliminado",1)
-    lcd.println("----------------",2)*/
+    lcd.println("----------------",2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -239,9 +239,9 @@ router.post('/profesorUpdate', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Profe update",1)
-    lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)*/
+    lcd.println(req.body.nombre + " " +req.body.apellido_paterno,2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -295,9 +295,9 @@ router.post('/registroMateria', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Materia agregada",1)
-    lcd.println(req.body.nombre,2)*/
+    lcd.println(req.body.nombre,2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -363,9 +363,9 @@ router.post('/materiaDelete', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Materia borrada",1)
-    lcd.println(req.body.nombre,2)*/
+    lcd.println(req.body.nombre,2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -386,9 +386,9 @@ router.post('/materiaUpdate', (req: Request, res: Response)=>{
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("Materia update",1)
-    lcd.println(req.body.nombre,2)*/
+    lcd.println(req.body.nombre,2)
             var queryResults = results
         }else{
             results[0] = "error"
@@ -544,9 +544,9 @@ router.post('/asistencia', (req: Request, res: Response)=>{
             //     ok:"No registrado",
             //     b:false
             // });
-                /*lcd.clear()
+                lcd.clear()
     lcd.println("-----Alumno-----",1)
-    lcd.println(--no Registrado,2-)*/
+    lcd.println("--no Registrado,2-")
             res.send(false)
         }else{
             id_alumno=results3[0].id
@@ -567,9 +567,9 @@ router.post('/asistencia', (req: Request, res: Response)=>{
                         }
                         else{
                             console.log(results3.nombre)
-        /*lcd.clear()
+        lcd.clear()
     lcd.println("Alumno registrad",1)
-    lcd.println(results3.nombre,2-)*/
+    lcd.println("results3.nombre,2-")
                             res.json({
                                 ok:true
                             });
