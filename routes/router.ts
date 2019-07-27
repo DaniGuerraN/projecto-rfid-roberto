@@ -1,10 +1,8 @@
 import { Router, Request, Response, response } from 'express';
 import { lchmod } from 'fs';
 var mysql = require('mysql');
-/*var LCD = require('lcdi2c');
+var LCD = require('lcdi2c');
 var lcd = new LCD( 1, 0x27, 20, 4);
-const {StringDecoder} = require('string_decoder')
-var sleep = require('sleep');
 lcd.clear();
 
 
@@ -13,7 +11,7 @@ lcd.clear();
 		lcd.clear();
 		lcd.print('-----READY!-----');
 
-*/
+
 
 var connection = mysql.createConnection({
     host: '192.168.1.72',

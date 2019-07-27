@@ -2,19 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 var mysql = require('mysql');
-/*var LCD = require('lcdi2c');
-var lcd = new LCD( 1, 0x27, 20, 4);
-const {StringDecoder} = require('string_decoder')
-var sleep = require('sleep');
+var LCD = require('lcdi2c');
+var lcd = new LCD(1, 0x27, 20, 4);
 lcd.clear();
-
-
-
-
-        lcd.clear();
-        lcd.print('-----READY!-----');
-
-*/
+lcd.clear();
+lcd.print('-----READY!-----');
 var connection = mysql.createConnection({
     host: '192.168.1.72',
     user: 'Dani',
