@@ -337,7 +337,7 @@ router.get('/materiaProfesor', (req: Request, res: Response)=>{
 
     var queryResults:any
 
-    var queryString = 'SELECT materia.nombre asignatura, profesor.nombre, profesor.apellido_paterno, profesor.apellido_materno from materia INNER JOIN profesor on materia.id_profesor = profesor.id'
+    var queryString = 'SELECT materia.nombre asignatura, profesor.nombre, profesor.apellido_paterno, profesor.apellido_materno, materia.id from materia INNER JOIN profesor on materia.id_profesor = profesor.id'
 
     connection.query(queryString, function (error:any, results:any, fields:any) {
         if(results.length != 0){
