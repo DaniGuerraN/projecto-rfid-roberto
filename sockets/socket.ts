@@ -16,6 +16,6 @@ export const mesanjes = (Cliente: Socket, io: SocketIO.Server) => {
 export const escucharEsp = (Cliente: Socket, io: SocketIO.Server) => {
     Cliente.on('esp', (payload)=> {
         console.log('Mensaje Recibido', payload);
-        io.emit('mensaje-nuevo', payload);
+        io.emit('registro', payload);
     });
 }

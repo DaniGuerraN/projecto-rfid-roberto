@@ -584,12 +584,13 @@ router.post('/asistencia', (req: Request, res: Response)=>{
                         id_relacion = results[0].id
                     }
                     var fecha = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate()
-                    var queryString2 = 'INSERT into asistencia (id_alumno,id_relacion,fecha,asis) VALUES(' + id_alumno + ',' + id_relacion + ',"' + fecha +'",true)'
+                    var queryString2 = 'INSERT ignore into asistencia (id_alumno,id_relacion,fecha,asis) VALUES(' + id_alumno + ',' + id_relacion + ',"' + fecha +'",true)'
                     connection.query(queryString2, function (error2:any, results2:any, fields:any) {
                         if(error2){
                             
                         }
                         else{
+                            console.log(results3)
                             console.log(results3.nombre)
         lcd.clear()
     lcd.println("Alumno registrad",1)

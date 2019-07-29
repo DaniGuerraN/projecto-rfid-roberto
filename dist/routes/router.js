@@ -277,7 +277,7 @@ router.get('/materia', (req, res) => {
 //retorna todas las materias
 router.get('/materiaProfesor', (req, res) => {
     var queryResults;
-    var queryString = 'SELECT materia.nombre asignatura, profesor.nombre, profesor.apellido_paterno, profesor.apellido_materno from materia INNER JOIN profesor on materia.id_profesor = profesor.id';
+    var queryString = 'SELECT materia.nombre asignatura, profesor.nombre, profesor.apellido_paterno, profesor.apellido_materno, materia.id from materia INNER JOIN profesor on materia.id_profesor = profesor.id';
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
             var queryResults = results;
@@ -357,6 +357,25 @@ router.post('/materiaById', (req, res) => {
 router.post('/materiaByIdAlumno', (req, res) => {
     var queryResults;
     var queryString = "SELECT materia.* FROM horario INNER JOIN materia on horario.id_relaciones = materia.id INNER JOIN alumno on alumno.id = horario.id_alumno WHERE alumno.id =" + req.body.id_alumno;
+    connection.query(queryString, function (error, results, fields) {
+        if (results.length != 0) {
+            var queryResults = results;
+        }
+        else {
+            results[0] = "error";
+            var queryResults = results[0];
+        }
+        res.json({
+            ok: true,
+            r: queryResults
+        });
+    });
+    // cuerpo:cuerpo
+});
+//busca a un alumni por rfid y regresa los datos
+router.post('/materiaProfesor2', (req, res) => {
+    var queryResults;
+    var queryString = "SELECT  materia.id id_materia, profesor.id id_profesor, materia.nombre asignatura, profesor.nombre, profesor.apellido_paterno, profesor.apellido_materno from materia INNER JOIN profesor on materia.id_profesor = profesor.id where materia.id=" + req.body.id_materia;
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
             var queryResults = results;
@@ -461,11 +480,12 @@ router.post('/asistencia', (req, res) => {
                         id_relacion = results[0].id;
                     }
                     var fecha = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-                    var queryString2 = 'INSERT into asistencia (id_alumno,id_relacion,fecha,asis) VALUES(' + id_alumno + ',' + id_relacion + ',"' + fecha + '",true)';
+                    var queryString2 = 'INSERT ignore into asistencia (id_alumno,id_relacion,fecha,asis) VALUES(' + id_alumno + ',' + id_relacion + ',"' + fecha + '",true)';
                     connection.query(queryString2, function (error2, results2, fields) {
                         if (error2) {
                         }
                         else {
+                            console.log(results3);
                             console.log(results3.nombre);
                             lcd.clear();
                             lcd.println("Alumno registrad", 1);
@@ -489,7 +509,7 @@ router.post('/asistencia', (req, res) => {
 //busca a un alumni por rfid y regresa los datos
 router.post('/asistenciaById', (req, res) => {
     var queryResults;
-    var queryString = 'SELECT r.hora_inicio, r.hora_fin, m.nombre clase, r.id_dia from alumno a INNER JOIN asistencia h on a.id = h.id_alumno INNER JOIN relacion r on r.id = h.id_relacion INNER JOIN materia m on r.id_materia = m.id WHERE a.id =' + req.body.id_alumno;
+    var queryString = 'SELECT r.hora_inicio, r.hora_fin, m.nombre clase, r.id_dia, a.nombre from alumno a INNER JOIN asistencia h on a.id = h.id_alumno INNER JOIN relacion r on r.id = h.id_relacion INNER JOIN materia m on r.id_materia = m.id WHERE a.id =' + req.body.id_alumno;
     connection.query(queryString, function (error, results, fields) {
         if (results.length != 0) {
             var queryResults = results;

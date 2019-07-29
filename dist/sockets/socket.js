@@ -14,6 +14,6 @@ exports.mesanjes = (Cliente, io) => {
 exports.escucharEsp = (Cliente, io) => {
     Cliente.on('esp', (payload) => {
         console.log('Mensaje Recibido', payload);
-        io.emit('mensaje-nuevo', payload);
+        io.emit('registro', payload);
     });
 };
